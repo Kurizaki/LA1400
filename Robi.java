@@ -2,31 +2,31 @@ package KoelewijnKeanu;
 import robocode.*;
 
 public class Robi extends JuniorRobot {
- 	int moveCounter = 0;
+    int moveCounter = 0;
     int moveDirection = 1;
     int moveDistance = 100;
 
     public void run() {
         setColors(black, orange, yellow);
         while (true) {
-			remainingPlayerReaction();
+	remainingPlayerReaction();
         }
     }
 
     public void onScannedRobot() {
-		int scannedDist = scannedDistance;
+	int scannedDist = scannedDistance;
         turnGunTo(scannedAngle);
-		enemyEnergy();
-		//distance less than a quarter of the field height, the robot moves backwards.
+	enemyEnergy();
+	//distance less than a quarter of the field height, the robot moves backwards.
         if (scannedDistance < fieldHeight / 4) {
             back(fieldHeight / 2);
         }
     }
 	
-	public void enemyEnergy() {
-		int scannedEnerg = scannedEnergy;
-		if (scannedEnerg > 50){
-			fire(1.5);
+     public void enemyEnergy() {
+     int scannedEnerg = scannedEnergy;
+     if (scannedEnerg > 50){
+	fire(1.5);
 		} else if (scannedEnerg < 50) {
 			fire(2.5);
 		} else if (scannedEnerg < 25) {
